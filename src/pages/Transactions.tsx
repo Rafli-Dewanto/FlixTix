@@ -12,7 +12,7 @@ export default function Transactions() {
     const [transactions, setTransactions] = useAtom(transactionAtom);
     const [isPurchaseSuccess,] = useAtom(purchaseSuccessAtom);
     const [movieId, setMovieId] = useState(0);
-    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleCancel = (transactionIdToDelete: number) => {
         setMovieId(transactionIdToDelete)
@@ -20,11 +20,11 @@ export default function Transactions() {
             (transaction) => transaction.id !== transactionIdToDelete
         );
         setTransactions(updatedTransactions);
-        setIsOpenModal(false)
+        setIsOpen(false)
     };
 
     const handleModal = (id: number) => {
-        setIsOpenModal(true)
+        setIsOpen(true)
         setMovieId(id)
     }
 
@@ -40,9 +40,9 @@ export default function Transactions() {
                 : null
             }
 
-            {/* confirmation delete order modal */}
+            {/* delete order confirmation modal */}
             <div
-                className={`fixed ${isOpenModal ? 'block' : 'hidden'} inset-0 flex font-inter items-center justify-center z-50`}>
+                className={`fixed ${isOpen ? 'block' : 'hidden'} inset-0 flex font-inter items-center justify-center z-50`}>
                 <div className="fixed inset-0 z-50 bg-black opacity-50"></div>
                 <motion.div
                     initial={{ scale: 0 }}
@@ -63,7 +63,7 @@ export default function Transactions() {
                         </button>
                         <button
                             className="px-4 py-2 text-gray-900 rounded hover:text-gray-500"
-                            onClick={() => setIsOpenModal(false)}
+                            onClick={() => setIsOpen(false)}
                         >
                             Cancel
                         </button>
