@@ -6,6 +6,7 @@ import MovieDetail from './pages/MovieDetail';
 import Profile from './pages/Profile';
 import BookSeats from './pages/BookSeats';
 import TopUp from './pages/TopUp';
+import Transactions from './pages/Transactions';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/movies/book-seats/:id" element={<BookSeats />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/top-up" element={<TopUp />} />
+        <Route path="/transactions" element={<Transactions />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

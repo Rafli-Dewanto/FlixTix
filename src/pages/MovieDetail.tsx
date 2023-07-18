@@ -7,16 +7,16 @@ import { userAtom } from '@/atom';
 import ErrorAlert from '@/components/ErrorAlert';
 import movies from '@/movies.json';
 import PrimaryButton from '@/components/PrimaryButton';
-import NavBar from '@/components/NavBar';
 import IMovie from '@/utils/types/movie';
+import MainLayout from '@/layouts/MainLayout';
 
 const MovieDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [movie, setMovie] = useState<IMovie>();
   const [user, _setUser] = useAtom(userAtom);
-  const [userBalance, _setUserBalance] = useState<number>(user.balance);
-  const [ticketCount, _setTicketCount] = useState<number>(1);
+  const [userBalance,] = useState<number>(user.balance);
+  const [ticketCount,] = useState<number>(1);
   const [isError, setIsError] = useState<boolean>(false);
   const [price, setPrice] = useState<number>(0);
 
@@ -48,8 +48,7 @@ const MovieDetail = () => {
   }
 
   return (
-    <>
-      <NavBar />
+    <MainLayout>
       {/* checkout */}
       <ErrorAlert
         isError={isError}
@@ -84,7 +83,7 @@ const MovieDetail = () => {
           </PrimaryButton>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 };
 

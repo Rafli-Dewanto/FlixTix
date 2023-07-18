@@ -10,6 +10,9 @@ export default {
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
+    minHeight: {
+      '1/4': '25%'
+    },
     extend: {
       colors: {
         'dodger-blue': {

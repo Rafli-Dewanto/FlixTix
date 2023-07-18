@@ -21,8 +21,8 @@ export default function Seats({
                     return (
                         <div
                             key={index}
-                            className={`flex ${isSelected ? 'bg-[#22c55e] border-[#22c55e]' : 'bg-white'
-                                } items-center active:bg-[#22c55e] active:border-[#22c55e] justify-center w-12 h-12 border-2 hover:bg-slate-200 hover:border-slate-400 border-slate-300 rounded-2xl`}
+                            className={`flex ${isSelected ? 'bg-[#43e590] border-[#43e590]' : 'bg-white'
+                                } items-center active:bg-[#43e590] active:border-[#43e590] justify-center w-12 h-12 border-2 hover:bg-slate-200 hover:border-slate-400 border-slate-300 rounded-2xl`}
                             onClick={() => handleSeatClick(index)}
                         >
                             {seatNumber}

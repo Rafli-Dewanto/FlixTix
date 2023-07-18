@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useCallback, useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
-import { userAtom } from '@/atom';
+import { purchaseSuccessAtom, transactionAtom, userAtom } from '@/atom';
 import movies from '@/movies.json';
 import { useNavigate, useParams } from 'react-router-dom';
 import IMovie from '@/utils/types/movie';
@@ -11,8 +11,10 @@ import MainLayout from '@/layouts/MainLayout';
 const BookSeats = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [transactions, setTransactions] = useAtom(transactionAtom);
   const [selectedSeats, setSelectedSeats] = useState<number[]>([]);
   const [user, setUser] = useAtom(userAtom);
+  const [, setisPurchaseSuccess] = useAtom(purchaseSuccessAtom);
   const [name, setName] = useState<string>('');
   const [age, setAge] = useState<number>(0);
   const [movie, setMovie] = useState<IMovie>();
@@ -48,7 +50,19 @@ const BookSeats = () => {
       alert(`You're not old enough to watch this movie.`);
       navigate('/');
     } else {
-      navigate(`/profile`)
+      if (selectedSeats.length === 0) return alert('please select a seat')
+      setTransactions([
+        ...transactions,
+        {
+          id: transactions.length + 1,
+          movieName: movie?.title as string,
+          tickets: selectedSeats.length,
+          price: movie?.ticket_price as number,
+          total: movie?.ticket_price as number * selectedSeats.length,
+        },
+      ])
+      setisPurchaseSuccess(true)
+      navigate(`/transactions`);
     }
   };
 

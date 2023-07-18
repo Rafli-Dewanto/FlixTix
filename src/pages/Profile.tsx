@@ -1,20 +1,24 @@
 import { useAtom } from 'jotai';
 import React, { useState } from 'react';
-import { userAtom } from '@/atom';
+import { purchaseSuccessAtom, userAtom } from '@/atom';
 import formatRupiah from '@/utils/format-rupiah';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import MainLayout from '@/layouts/MainLayout';
+import Modal from '@/components/Modal';
 
 const Profile = () => {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const [user, _setUser] = useAtom(userAtom);
-  const [_username, setUsername] = useState(user.username);
-  const [_fullName, setFullName] = useState(user.fullname);
-  const [_age, setAge] = useState(user.age);
-  const [_email, setEmail] = useState(user.email);
-  const [_password, setPassword] = useState(user.password);
+  const [user,] = useAtom(userAtom);
+  const [, setUsername] = useState(user.username);
+  const [, setFullName] = useState(user.fullname);
+  const [, setAge] = useState(user.age);
+  const [, setEmail] = useState(user.email);
+  const [, setPassword] = useState(user.password);
+  const [isPurchaseSuccess,] = useAtom(purchaseSuccessAtom)
+
+
 
   const handleSaveChanges = () => {
     setIsEditing(false);
@@ -27,6 +31,16 @@ const Profile = () => {
   return (
     <>
       <MainLayout page='profile'>
+
+        {isPurchaseSuccess ?
+          <Modal
+            description='Your payment has been successfully submitted. We’ve sent you an
+                email with all of the details of your order.'
+            title='Success'
+            show={true} />
+          : null
+        }
+
         <motion.div
           initial={{ y: 300 }}
           animate={{ y: 0 }}
