@@ -1,8 +1,7 @@
 import { atom, PrimitiveAtom } from 'jotai';
-import IUser from '@/utils/types/user';
 import { ITransaction } from './utils/types/transaction';
 
-export const userAtom: PrimitiveAtom<IUser> = atom({
+export const userAtom = atom({
   email: 'john@email.com',
   password: 'password',
   username: 'John',
@@ -26,6 +25,6 @@ export const transactionAtom: PrimitiveAtom<ITransaction[]> = atom<ITransaction[
     movieName: 'Oppenheimer',
     tickets: 2,
     price: 50000,
-    total: 150000,
+    total: 100000,
   },
 ]);

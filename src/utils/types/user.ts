@@ -4,5 +4,5 @@ export default interface IUser {
   username: string;
   fullname: string;
   age: number;
-  balance: number;
+  balance?: number;
 }
