@@ -9,7 +9,7 @@ export default function SearchBar({
     setQuery: React.Dispatch<React.SetStateAction<string>>;
 }) {
     return (
-        <div className="relative mb-10 sm:w-3/12">
+        <div className="relative mb-10 max-w-fit">
             <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
