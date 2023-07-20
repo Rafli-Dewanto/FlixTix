@@ -44,6 +44,7 @@ const BookSeats = () => {
       ...user,
       fullname: name || user.fullname,
       age: age || user.age,
+      balance: user.balance - (movie?.ticket_price ?? 0)
     });
 
     if (movie && age < movie.age_rating) {
