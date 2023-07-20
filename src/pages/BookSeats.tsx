@@ -40,11 +40,14 @@ const BookSeats = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+    if (movie?.ticket_price == undefined) {
+        return alert('Something went wrong')
+    }
     setUser({
       ...user,
       fullname: name || user.fullname,
       age: age || user.age,
-      balance: user.balance - (movie?.ticket_price ?? 0)
+      balance: user.balance - movie.ticket_price * selectedSeats.length
     });
 
     if (movie && age < movie.age_rating) {
