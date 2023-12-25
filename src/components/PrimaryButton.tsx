@@ -1,11 +1,14 @@
 import React, { MouseEventHandler } from 'react';
 
-const PrimaryButton = ({ children, onClick, type }:
-  {
-    children: React.ReactNode,
-    onClick?: MouseEventHandler<HTMLButtonElement>,
-    type?: "button" | "submit" | "reset" | undefined
-  }) => {
+const PrimaryButton = ({
+  children,
+  onClick,
+  type
+}: {
+  children: React.ReactNode,
+  onClick?: MouseEventHandler<HTMLButtonElement>,
+  type?: "button" | "submit" | "reset" | undefined
+}) => {
   return (
     <button
       type={type}
